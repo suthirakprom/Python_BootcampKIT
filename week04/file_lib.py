@@ -3,7 +3,19 @@ import datetime
 
 class FileLib: 
     def inspect(self):
-        pass
+        file_list = []
+        folder_list = []
+        for i in os.listdir():
+             if os.path.isfile(i):
+                file_list.append(i) 
+        for i in os.listdir():
+            if os.path.isdir(i):
+                folder_list.append(i)
+        res = tuple(file_list) + tuple(folder_list)
+        if len(folder_list) != 0 and len(file_list) != 0:
+            print(res) 
+        else: 
+            return []
     def current_path(self):
         return os.path.dirname(os.path.abspath(__file__))
     def read(self, filename): 
@@ -87,3 +99,5 @@ class FileLib:
             return 1
         except:
             return 0   
+
+FileLib().inspect()
