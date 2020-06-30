@@ -5,9 +5,14 @@ class FileLib:
     def inspect(self):
         pass
     def current_path(self):
-        pass
+        return os.path.dirname(os.path.abspath(__file__))
     def read(self, filename): 
-        pass 
+        try:
+            f = open(filename, "r")
+            print(f.read())
+            f.close()
+        except:
+            print("Invalid FILENAME")
     def write(self, filename, content):
         choice = ''
         lst = os.listdir()
